@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b50">
+
+<title>Academic Heights Public School | Science Fair 2026</title>
+
+<style>
+:root {
+  --navy: #102b50;
+  --blue: #245a91;
+  --light: #f3f6fb;
+  --white: #ffffff;
+  --text: #263449;
+  --muted: #68778b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--white);
+  padding: 15px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  box-shadow: 0 2px 12px #0000000d;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  color: white;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.brand h2 {
+  font-size: 17px;
+  color: var(--navy);
+}
+
+.brand p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+.hero {
+  padding: 85px 8%;
+  background: linear-gradient(120deg, #102b50, #245a91);
+  color: white;
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: #e1eaf5;
+  margin-bottom: 28px;
+}
+
+.btn {
+  display: inline-block;
+  background: white;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 7px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.88;
+}
+
+section {
+  padding: 65px 7%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: 30px;
+}
+
+.section-title p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.about {
+  background: white;
+  text-align: center;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 18px;
+}
+
+.class-card {
+  background: white;
+  padding: 25px 15px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #e4eaf2;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.class-card:hover,
+.class-card.active {
+  transform: translateY(-4px);
+  border-color: var(--blue);
+  box-shadow: 0 7px 20px #102b5015;
+}
+
+.class-card h3 {
+  color: var(--navy);
+  font-size: 20px;
+}
+
+.class-card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project-area {
+  background: white;
+}
+
+.project-controls {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.project-controls input {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #d8e0ea;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.project-card {
+  background: var(--light);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.project-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  background: #dce5f0;
+}
+
+.project-info {
+  padding: 18px;
+}
+
+.project-info h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-info small {
+  display: block;
+  margin-top: 12px;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  display: none;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.gallery-item {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #dce5f0;
+}
+
+.gallery-item p {
+  padding: 12px;
+  font-weight: bold;
+  color: var(--navy);
+}
+
+.notice {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--blue);
+  border-radius: 7px;
+}
+
+.notice h3 {
+  color: var(--navy);
+}
+
+.notice p {
+  color: var(--muted);
+}
+
+.upload {
+  background: #e9eff7;
+  text-align: center;
+}
+
+.upload-box {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+}
+
+.upload-box p {
+  margin: 15px 0 22px;
+  color: var(--muted);
+}
+
+.upload-btn {
+  background: var(--navy);
+  color: white;
+}
+
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #d5e0ee;
+  margin-top: 5px;
+}
+
+@media(max-width: 650px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 13px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 60px 7%;
+  }
+
+  section {
+    padding: 48px 6%;
+  }
+
+  .project-controls {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">AH</div>
+    <div>
+      <h2>ACADEMIC HEIGHTS</h2>
+      <p>PUBLIC SCHOOL · KUKATPALLY</p>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#classes">Classes</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#notices">Notices</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <p>ACADEMIC HEIGHTS PUBLIC SCHOOL</p>
+    <h1>Discover. Explore. Innovate.</h1>
+    <p>
+      Welcome to our school activity portal.
+      Explore the creativity, ideas and innovations
+      of our students from Classes 1 to 9.
+    </p>
+    <a class="btn" href="#classes">Explore Projects</a>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-title">
+    <h2>About Our School</h2>
+    <p>Learning today, leading tomorrow.</p>
+  </div>
+
+  <div class="about-content">
+    <p>
+      Academic Heights Public School, Kukatpally,
+      provides opportunities for students to learn,
+      explore their interests and develop creative ideas.
+      This website showcases school projects, activities,
+      achievements and special events.
+    </p>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="section-title">
+    <h2>Explore Classes</h2>
+    <p>Select a class to explore its projects.</p>
+  </div>
+
+  <div class="class-grid" id="classGrid"></div>
+</section>
+
+<section class="project-area" id="projects">
+  <div class="section-title">
+    <h2>Student Projects</h2>
+    <p id="selectedClass">Explore projects from all classes.</p>
+  </div>
+
+  <div class="project-controls">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search project names..."
+      aria-label="Search projects"
+    >
+  </div>
+
+  <div class="project-grid" id="projectGrid"></div>
+
+  <div class="empty" id="emptyMessage">
+    No projects have been added here yet.
+    Please check again later.
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-title">
+    <h2>Photo Gallery</h2>
+    <p>Highlights from our school activities.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://placehold.co/600x400/e8eef7/102b50?text=Science+Fair"
+           alt="Science Fair placeholder">
+      <p>Science Fair</p>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://placehold.co/600x400/e8eef7/102b50?text=Student+Activities"
+           alt="Student Activities placeholder">
+      <p>Student Activities</p>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://placehold.co/600x400/e8eef7/102b50?text=School+Events"
+           alt="School Events placeholder">
+      <p>School Events</p>
+    </div>
+  </div>
+</section>
+
+<section id="notices">
+  <div class="section-title">
+    <h2>Announcements</h2>
+    <p>Important school updates.</p>
+  </div>
+
+  <div class="notice">
+    <h3>Science Fair 2026</h3>
+    <p>Our Science Fair is scheduled for December 3, 2026.</p>
+  </div>
+
+  <div class="notice">
+    <h3>Project Activities</h3>
+    <p>Explore student projects from Classes 1 to 9.</p>
+  </div>
+</section>
+
+<section class="upload" id="teacher">
+  <div class="upload-box">
+    <h2>Teacher Project Submission</h2>
+    <p>
+      Teachers can submit project titles, descriptions
+      and approved photographs through the school form.
+    </p>
+
+    <a
+      class="btn upload-btn"
+      href="YOUR_GOOGLE_FORM_LINK"
+      target="_blank"
+      rel="noopener"
+    >
+      Submit a Project
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h3>Academic Heights Public School</h3>
+  <p>Kukatpally, Hyderabad, Telangana</p>
+  <p>Science Fair 2026 | School Activity Portal</p>
+  <p>© 2026 Academic Heights Public School</p>
+</footer>
+
+<script>
+const classes = [
+  "Class 1", "Class 2", "Class 3",
+  "Class 4", "Class 5", "Class 6",
+  "Class 7", "Class 8", "Class 9"
+];
+
+// Add actual teacher-approved projects here.
+const projects = [
+  // Example:
+  // {
+  //   title: "Smart Dustbin",
+  //   className: "Class 9",
+  //   description: "A smart dustbin that detects waste.",
+  //   image: "images/smart-dustbin.jpg"
+  // }
+];
+
+let selectedClass = "All Classes";
+
+const classGrid = document.getElementById("classGrid");
+const projectGrid = document.getElementById("projectGrid");
+const selectedLabel = document.getElementById("selectedClass");
+const searchInput = document.getElementById("searchInput");
+const emptyMessage = document.getElementById("emptyMessage");
+
+function createClassCards() {
+  classGrid.innerHTML = "";
+
+  ["All Classes", ...classes].forEach(name => {
+    const card = document.createElement("div");
+    card.className = "class-card" +
+      (selectedClass === name ? " active" : "");
+
+    const heading = document.createElement("h3");
+    heading.textContent = name;
+
+    const description = document.createElement("p");
+    description.textContent =
+      name === "All Classes" ? "View all projects" : "Explore projects";
+
+    card.append(heading, description);
+
+    card.addEventListener("click", () => {
+      selectedClass = name;
+      createClassCards();
+      displayProjects();
+      document.getElementById("projects").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    classGrid.appendChild(card);
+  });
+}
+
+function displayProjects() {
+  projectGrid.innerHTML = "";
+
+  const search = searchInput.value.toLowerCase();
+
+  const filtered = projects.filter(project => {
+    const matchesClass =
+      selectedClass === "All Classes" ||
+      project.className === selectedClass;
+
+    const matchesSearch =
+      project.title.toLowerCase().includes(search) ||
+      project.description.toLowerCase().includes(search);
+
+    return matchesClass && matchesSearch;
+  });
+
+  selectedLabel.textContent =
+    selectedClass === "All Classes"
+      ? "Explore projects from all classes."
+      : "Showing projects from " + selectedClass;
+
+  filtered.forEach(project => {
+    const card = document.createElement("article");
+    card.className = "project-card";
+
+    const img = document.createElement("img");
+    img.src = project.image ||
+      "https://placehold.co/600x400/e8eef7/102b50?text=Student+Project";
+    img.alt = project.title;
+    img.loading = "lazy";
+
+    const info = document.createElement("div");
+    info.className = "project-info";
+
+    const title = document.createElement("h3");
+    title.textContent = project.title;
+
+    const description = document.createElement("p");
+    description.textContent = project.description;
+
+    const classText = document.createElement("small");
+    classText.textContent = project.className;
+
+    info.append(title, description, classText);
+    card.append(img, info);
+    projectGrid.appendChild(card);
+  });
+
+  emptyMessage.style.display =
+    filtered.length === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", displayProjects);
+
+createClassCards();
+displayProjects();
+</script>
+
+</body>
+  </html>
+  
